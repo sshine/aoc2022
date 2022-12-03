@@ -4,9 +4,7 @@ use std::{fs::read_to_string, path::Path};
 use crate::parsing::lines;
 use crate::rock_paper_scissors::{beats, Gesture, Gesture::*, Outcome, Outcome::*};
 
-type Score = u64;
-
-pub fn part1(input_path: &Path) -> Score {
+pub fn part1(input_path: &Path) -> u64 {
     let input = read_to_string(input_path).expect("puzzle input on disk");
     lines(&input)
         .map(parse_elf_codes_part1)
@@ -18,7 +16,7 @@ pub fn part1(input_path: &Path) -> Score {
         .sum()
 }
 
-pub fn part2(input_path: &Path) -> Score {
+pub fn part2(input_path: &Path) -> u64 {
     let input = read_to_string(input_path).expect("puzzle input on disk");
     lines(&input)
         .map(parse_elf_codes_part2)
@@ -54,15 +52,15 @@ fn strategic_choice(them: Gesture, outcome: Outcome) -> Gesture {
     }
 }
 
-const ROCK_SCORE: Score = 1;
-const PAPER_SCORE: Score = 2;
-const SCISSORS_SCORE: Score = 3;
+const ROCK_SCORE: u64 = 1;
+const PAPER_SCORE: u64 = 2;
+const SCISSORS_SCORE: u64 = 3;
 
-const LOSE_SCORE: Score = 0;
-const DRAW_SCORE: Score = 3;
-const WIN_SCORE: Score = 6;
+const LOSE_SCORE: u64 = 0;
+const DRAW_SCORE: u64 = 3;
+const WIN_SCORE: u64 = 6;
 
-fn gesture_score(gesture: Gesture) -> Score {
+fn gesture_score(gesture: Gesture) -> u64 {
     match gesture {
         Rock => ROCK_SCORE,
         Paper => PAPER_SCORE,
