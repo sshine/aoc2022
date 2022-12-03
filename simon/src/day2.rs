@@ -1,48 +1,31 @@
 use phf::phf_map;
 use std::{fs::read_to_string, path::Path};
 
-use crate::aux::lines;
-
-#[derive(Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
-enum Gesture {
-    Rock,
-    Paper,
-    Scissors,
-}
-use Gesture::*;
-
-#[derive(Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
-enum Outcome {
-    Lose,
-    Draw,
-    Win,
-}
-use Outcome::*;
+use crate::parsing::lines;
+use crate::rock_paper_scissors::{beats, Gesture, Gesture::*, Outcome, Outcome::*};
 
 type Score = u64;
 
-const ROCK_SCORE: Score = 1;
-const PAPER_SCORE: Score = 2;
-const SCISSORS_SCORE: Score = 3;
-
-const LOSE_SCORE: Score = 0;
-const DRAW_SCORE: Score = 3;
-const WIN_SCORE: Score = 6;
-
 pub fn part1(input_path: &Path) -> Score {
-    let input = read_to_string(input_path).unwrap();
+    let input = read_to_string(input_path).expect("puzzle input on disk");
     lines(&input)
-        .map(lookup_part1)
-        .map(|(them, you)| gesture_score(you) + outcome_score(find_outcome(them, you)))
+        .map(parse_elf_codes_part1)
+        .map(|(them, you)| {
+            let a = gesture_score(you);
+            let b = outcome_score(find_outcome(them, you));
+            a + b
+        })
         .sum()
 }
 
 pub fn part2(input_path: &Path) -> Score {
-    let input = read_to_string(input_path).unwrap();
+    let input = read_to_string(input_path).expect("puzzle input on disk");
     lines(&input)
-        .map(lookup_part2)
+        .map(parse_elf_codes_part2)
         .map(|(them, outcome)| {
-            gesture_score(strategic_choice(them, outcome)) + outcome_score(outcome)
+            let a = gesture_score(strategic_choice(them, outcome));
+            let b = outcome_score(outcome);
+            a + b
         })
         .sum()
 }
@@ -71,13 +54,13 @@ fn strategic_choice(them: Gesture, outcome: Outcome) -> Gesture {
     }
 }
 
-fn beats(them: Gesture) -> Gesture {
-    match them {
-        Rock => Paper,
-        Paper => Scissors,
-        Scissors => Rock,
-    }
-}
+const ROCK_SCORE: Score = 1;
+const PAPER_SCORE: Score = 2;
+const SCISSORS_SCORE: Score = 3;
+
+const LOSE_SCORE: Score = 0;
+const DRAW_SCORE: Score = 3;
+const WIN_SCORE: Score = 6;
 
 fn gesture_score(gesture: Gesture) -> Score {
     match gesture {
@@ -95,11 +78,11 @@ fn outcome_score(outcome: Outcome) -> u64 {
     }
 }
 
-fn lookup_part1(line: &str) -> (Gesture, Gesture) {
+fn parse_elf_codes_part1(line: &str) -> (Gesture, Gesture) {
     PART1_TABLE.get(line).unwrap().to_owned()
 }
 
-fn lookup_part2(line: &str) -> (Gesture, Outcome) {
+fn parse_elf_codes_part2(line: &str) -> (Gesture, Outcome) {
     PART2_TABLE.get(line).unwrap().to_owned()
 }
 
