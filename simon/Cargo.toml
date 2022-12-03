@@ -1,0 +1,8 @@
+[package]
+name = "simon"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+itertools = "*"
+phf = { version = "0.11", features = ["macros"] }
