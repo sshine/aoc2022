@@ -2,6 +2,7 @@ use std::path::Path;
 
 use simon::day1;
 use simon::day2;
+use simon::day3;
 
 fn main() {
     let day1_input = Path::new("../inputs/day01.txt");
@@ -10,5 +11,9 @@ fn main() {
 
     let day2_input = Path::new("../inputs/day02.txt");
     println!("Day 2, part 1: {}", day2::part1(day2_input));
-    println!("Day 2, part 1: {}", day2::part2(day2_input));
+    println!("Day 2, part 2: {}", day2::part2(day2_input));
+
+    let day3_input = Path::new("../inputs/day03.txt");
+    println!("Day 3, part 1: {}", day3::part1(day3_input));
+    println!("Day 3, part 2: {}", day3::part2(day3_input));
 }
