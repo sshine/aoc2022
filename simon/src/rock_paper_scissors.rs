@@ -1,4 +1,5 @@
 use Gesture::*;
+use Outcome::*;
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub enum Gesture {
@@ -20,4 +21,20 @@ pub fn beats(them: Gesture) -> Gesture {
         Paper => Scissors,
         Scissors => Rock,
     }
+}
+
+pub fn find_outcome(them: Gesture, you: Gesture) -> Outcome {
+    if them == you {
+        return Draw;
+    }
+
+    if you == beats(them) {
+        return Win;
+    }
+
+    if them == beats(you) {
+        return Lose;
+    }
+
+    panic!("Unknown find_outcome({:?}, {:?})", them, you);
 }

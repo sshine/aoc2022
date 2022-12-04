@@ -2,7 +2,7 @@ use phf::phf_map;
 use std::{fs::read_to_string, path::Path};
 
 use crate::parsing::lines;
-use crate::rock_paper_scissors::{beats, Gesture, Gesture::*, Outcome, Outcome::*};
+use crate::rock_paper_scissors::{beats, find_outcome, Gesture, Gesture::*, Outcome, Outcome::*};
 
 pub fn part1(input_path: &Path) -> u64 {
     let input = read_to_string(input_path).expect("puzzle input on disk");
@@ -26,22 +26,6 @@ pub fn part2(input_path: &Path) -> u64 {
             a + b
         })
         .sum()
-}
-
-fn find_outcome(them: Gesture, you: Gesture) -> Outcome {
-    if them == you {
-        return Draw;
-    }
-
-    if you == beats(them) {
-        return Win;
-    }
-
-    if them == beats(you) {
-        return Lose;
-    }
-
-    panic!("Unknown find_outcome({:?}, {:?})", them, you);
 }
 
 fn strategic_choice(them: Gesture, outcome: Outcome) -> Gesture {
