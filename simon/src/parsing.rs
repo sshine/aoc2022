@@ -1,3 +1,9 @@
+use std::{fs::read_to_string, path::Path};
+
+pub fn read_input(input_path: &Path) -> String {
+    read_to_string(input_path).expect("puzzle input on disk")
+}
+
 pub fn number_chunks(input: &str) -> impl Iterator<Item = impl Iterator<Item = u64> + '_> + '_ {
     input.split("\n\n").map(numbers)
 }

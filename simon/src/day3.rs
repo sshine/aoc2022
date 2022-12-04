@@ -1,13 +1,9 @@
-use std::collections::HashSet;
-use std::fs::read_to_string;
-use std::path::Path;
-
 use itertools::Itertools;
+use std::collections::HashSet;
 
 use crate::parsing::lines;
 
-pub fn part1(input_path: &Path) -> u64 {
-    let input = read_to_string(input_path).expect("puzzle input on disk");
+pub fn part1(input: &str) -> u64 {
     lines(&input)
         .map(partition)
         .map(overlapping_items2)
@@ -15,8 +11,7 @@ pub fn part1(input_path: &Path) -> u64 {
         .sum()
 }
 
-pub fn part2(input_path: &Path) -> u64 {
-    let input = read_to_string(input_path).expect("puzzle input on disk");
+pub fn part2(input: &str) -> u64 {
     let elf_team_size = 3;
     let elf_teams = lines(&input).chunks(elf_team_size);
 

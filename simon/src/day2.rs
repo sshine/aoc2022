@@ -1,11 +1,9 @@
 use phf::phf_map;
-use std::{fs::read_to_string, path::Path};
 
 use crate::parsing::lines;
 use crate::rock_paper_scissors::{beats, find_outcome, Gesture, Gesture::*, Outcome, Outcome::*};
 
-pub fn part1(input_path: &Path) -> u64 {
-    let input = read_to_string(input_path).expect("puzzle input on disk");
+pub fn part1(input: &str) -> u64 {
     lines(&input)
         .map(parse_elf_codes_part1)
         .map(|(them, you)| {
@@ -16,8 +14,7 @@ pub fn part1(input_path: &Path) -> u64 {
         .sum()
 }
 
-pub fn part2(input_path: &Path) -> u64 {
-    let input = read_to_string(input_path).expect("puzzle input on disk");
+pub fn part2(input: &str) -> u64 {
     lines(&input)
         .map(parse_elf_codes_part2)
         .map(|(them, outcome)| {
