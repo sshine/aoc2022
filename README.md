@@ -20,4 +20,6 @@ adventofcode
         └── day25.txt
 ```
 
-As you can see, the input for each day is shared.
+## Python 3 template
+
+There is a Python 3 template. You can copy the directory `python-template` and begin coding here.
