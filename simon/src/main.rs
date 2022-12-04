@@ -7,19 +7,19 @@ use simon::day4;
 use simon::parsing::read_input;
 
 fn main() {
-    let day1_input = read_input(Path::new("../inputs/day01.txt"));
+    let day1_input = read_input(Path::new("./inputs/day01.txt"));
     println!("Day 1, part 1: {}", day1::part1(&day1_input));
     println!("Day 1, part 2: {}", day1::part2(&day1_input));
 
-    let day2_input = read_input(Path::new("../inputs/day02.txt"));
+    let day2_input = read_input(Path::new("./inputs/day02.txt"));
     println!("Day 2, part 1: {}", day2::part1(&day2_input));
     println!("Day 2, part 2: {}", day2::part2(&day2_input));
 
-    let day3_input = read_input(Path::new("../inputs/day03.txt"));
+    let day3_input = read_input(Path::new("./inputs/day03.txt"));
     println!("Day 3, part 1: {}", day3::part1(&day3_input));
     println!("Day 3, part 2: {}", day3::part2(&day3_input));
 
-    let day4_input = read_input(Path::new("../inputs/day04.txt"));
+    let day4_input = read_input(Path::new("./inputs/day04.txt"));
     println!("Day 4, part 1: {}", day4::part1(&day4_input));
     println!("Day 4, part 2: {}", day4::part2(&day4_input));
 }
