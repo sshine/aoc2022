@@ -18,64 +18,62 @@ def points(battle):
             #Move Points = 1
             #Draw Points = 3
             points = 4
-            return points
         case "A Y":
             result = "Op_Rock Me_Paper"
             # Move Points = 2
             # Win Points = 6
             points = 8
-            return points
         case "A Z":
             result = "Op_Rock Me_Scissors"
             # Move Points = 3
             # Loss Points = 0
             points = 3
-            return points
 
         case "B X":
             result = "Op_Paper Me_Rock"
             # Move Points = 1
             # Loss Points = 0
             points = 1
-            return points
         case "B Y":
             result = "Op_Paper Me_Paper"
             # Move Points = 1
             # Draw Points = 3
             points = 4
-            return points
         case "B Z":
             result = "Op_Paper Me_Scissors"
             # Move Points = 1
             # Win Points = 6
             points = 7
-            return points
 
         case "C X":
             result = "Op_Paper Me_Rock"
             # Move Points = 1
             # Loss Points = 0
             points = 1
-            return points
+
         case "C Y":
             result = "Op_Paper Me_Scissors"
             # Move Points = 2
             # Win Points = 6
             points = 8
-            return points
+
         case "C Z":
             result = "Op_Paper Me_Paper"
             # Move Points = 3
             # Draw Points = 3
             points = 6
-            return points
+    print(result + ":", end='')
+    print(str(points) + "   total: ", end="")
+    return points
 
 
 def part1(input):
     input = input.split("\n")
     total = 0
     for battle in input:
+        print(battle)
         total = total + points(battle)
+        print(total)
     return total
 
 
