@@ -5,9 +5,7 @@ import sys
 def part1(input):
     groups = input.split("\n\n")
     list_of_all_totals = map(total_calories, groups)
-
     return max(list_of_all_totals)
-
 
 def total_calories(group):
     # 1. split string into list of items
@@ -25,14 +23,10 @@ def part2(input):
     newlist = []
     for total in list_of_all_totals:
         newlist.append(total)
+    #sort and cut and kill and eat
     return sum(sorted(newlist)[-3:])
-
-
-
-
-    return "nope"
 
 if __name__ == "__main__":
     day_input = read_input(f"./input/{sys.argv[0][:-2]}txt")
     print(f"{sys.argv[0][:-3]}, part 1: {part1(day_input)}")
-    print(f"{sys.argv[0][:-3]} part 2: {part2(day_input)}")
+    print(f"{sys.argv[0][:-3]}, part 2: {part2(day_input)}")
