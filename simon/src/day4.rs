@@ -3,19 +3,19 @@ use nom::error::VerboseError;
 use nom::IResult;
 use std::ops::RangeInclusive;
 
-use crate::parsing::lines;
-
 type ParseResult<'a, Out> = IResult<&'a str, Out, VerboseError<&'a str>>;
 
 pub fn part1(input: &str) -> u64 {
-    lines(&input)
+    input
+        .lines()
         .map(parse_section_assignment)
         .filter(|section_assignment| overlaps_completely(section_assignment.clone()))
         .count() as u64
 }
 
 pub fn part2(input: &str) -> u64 {
-    lines(&input)
+    input
+        .lines()
         .map(parse_section_assignment)
         .filter(|section_assignment| overlaps(section_assignment.clone()))
         .count() as u64

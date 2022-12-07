@@ -1,10 +1,10 @@
 use phf::phf_map;
 
-use crate::parsing::lines;
 use crate::rock_paper_scissors::{beats, find_outcome, Gesture, Gesture::*, Outcome, Outcome::*};
 
 pub fn part1(input: &str) -> u64 {
-    lines(&input)
+    input
+        .lines()
         .map(parse_elf_codes_part1)
         .map(|(them, you)| {
             let a = gesture_score(you);
@@ -15,7 +15,8 @@ pub fn part1(input: &str) -> u64 {
 }
 
 pub fn part2(input: &str) -> u64 {
-    lines(&input)
+    input
+        .lines()
         .map(parse_elf_codes_part2)
         .map(|(them, outcome)| {
             let a = gesture_score(strategic_choice(them, outcome));

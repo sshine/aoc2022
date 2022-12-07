@@ -1,10 +1,9 @@
 use itertools::Itertools;
 use std::collections::HashSet;
 
-use crate::parsing::lines;
-
 pub fn part1(input: &str) -> u64 {
-    lines(&input)
+    input
+        .lines()
         .map(partition)
         .map(overlapping_items2)
         .map(|overlap| overlap.into_iter().map(priority).sum::<u64>())
@@ -13,7 +12,7 @@ pub fn part1(input: &str) -> u64 {
 
 pub fn part2(input: &str) -> u64 {
     let elf_team_size = 3;
-    let elf_teams = lines(&input).chunks(elf_team_size);
+    let elf_teams = input.lines().chunks(elf_team_size);
 
     elf_teams
         .into_iter()

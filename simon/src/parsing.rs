@@ -9,11 +9,7 @@ pub fn number_chunks(input: &str) -> impl Iterator<Item = impl Iterator<Item = u
 }
 
 pub fn numbers(input: &str) -> impl Iterator<Item = u64> + '_ {
-    lines(input).map(|n| n.parse::<u64>().expect("number"))
-}
-
-pub fn lines(input: &str) -> impl Iterator<Item = &str> {
-    input.strip_suffix("\n").unwrap_or(input).split("\n")
+    input.lines().map(|n| n.parse::<u64>().expect("number"))
 }
 
 #[cfg(test)]
