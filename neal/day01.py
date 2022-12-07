@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-from aoclib import read_input
+from aoclib import read_input, print_solutions
 import sys
 
 
@@ -26,7 +26,4 @@ def part2(input):
 
 
 if __name__ == "__main__":
-    day_input = read_input(f"./input/{sys.argv[0][:-2]}txt")
-    print(type(day_input))
-    print(f"{sys.argv[0][:-3]}, part 1: {part1(day_input)}")
-    print(f"{sys.argv[0][:-3]}, part 2: {part2(day_input)}")
+    print_solutions("01", part1, part2)
