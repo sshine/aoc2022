@@ -22,13 +22,7 @@ def total_calories(group):
 
 def part2(input):
     groups = input.split("\n\n")
-    list_of_all_totals = map(total_calories, groups)
-    # can not get map to turn into a list so....
-    newlist = []
-    for total in list_of_all_totals:
-        newlist.append(total)
-    #sort and cut and kill and eat
-    return sum(sorted(newlist)[-3:])
+    return sum(sorted(map(total_calories, groups))[-3:])
 
 
 if __name__ == "__main__":
