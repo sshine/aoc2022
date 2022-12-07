@@ -5,7 +5,7 @@ use simon::day2;
 use simon::day3;
 use simon::day4;
 use simon::day5;
-use simon::parsing::read_input;
+use simon::read_input;
 
 fn main() {
     let day1_input = read_input(Path::new("./inputs/day01.txt"));
