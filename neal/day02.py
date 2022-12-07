@@ -1,22 +1,16 @@
 from aoclib import read_input
-import sys
-
-def data_encoder(input):
-    #return a list of list of outcomes.
-    groups = input.split("\n")
-    return groups
 
 
 def points(battle):
-    #print(battle)
+    # print(battle)
     # A Op_Rock B Op_Paper C Op_Scissors
     # X Me_Rock Y 1 Me_Paper Z 1 Me_Scissors 3
     # Loss 0, Draw 3, Win 6
     match battle:
         case "A X":
             result = "Op_Rock Me_Rock"
-            #Move Points = 1
-            #Draw Points = 3
+            # Move Points = 1
+            # Draw Points = 3
             points = 4
             return points
         case "A Y":
@@ -46,25 +40,25 @@ def points(battle):
             return points
         case "B Z":
             result = "Op_Paper Me_Scissors"
-            # Move Points = 1
+            # Move Points = 3
             # Win Points = 6
-            points = 7
+            points = 9
             return points
 
         case "C X":
-            result = "Op_Paper Me_Rock"
+            result = "Op_Scissors Me_Rock"
             # Move Points = 1
-            # Loss Points = 0
-            points = 1
+            # Loss Points = 6
+            points = 7
             return points
         case "C Y":
-            result = "Op_Paper Me_Scissors"
+            result = "Op_Scissors Me_Paper"
             # Move Points = 2
-            # Win Points = 6
-            points = 8
+            # Win Points = 0
+            points = 2
             return points
         case "C Z":
-            result = "Op_Paper Me_Paper"
+            result = "Op_Scissors Me_Scissors"
             # Move Points = 3
             # Draw Points = 3
             points = 6
@@ -72,7 +66,7 @@ def points(battle):
 
 
 def part1(input):
-    input = input.split("\n")
+    input = input.rstrip().split("\n")
     total = 0
     for battle in input:
         total = total + points(battle)
