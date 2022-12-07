@@ -4,6 +4,8 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
+anyhow = "*"
 itertools = "*"
 phf = { version = "0.11", features = ["macros"] }
 nom = "7.1"
+regex = "1.7"
