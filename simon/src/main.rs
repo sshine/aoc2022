@@ -5,6 +5,7 @@ use simon::day2;
 use simon::day3;
 use simon::day4;
 use simon::day5;
+use simon::day6;
 use simon::read_input;
 
 fn main() {
@@ -27,4 +28,8 @@ fn main() {
     let day5_input = read_input(Path::new("./inputs/day05.txt"));
     println!("Day 5, part 1: {}", day5::part1(&day5_input));
     println!("Day 5, part 2: {}", day5::part2(&day5_input));
+
+    let day6_input = read_input(Path::new("./inputs/day06.txt"));
+    println!("Day 6, part 1: {}", day6::part1(&day6_input));
+    println!("Day 6, part 2: {}", day6::part2(&day6_input));
 }
