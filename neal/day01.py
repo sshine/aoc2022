@@ -12,7 +12,7 @@ def part1(input):
 
 def total_calories(group):
     # 1. split string into list of items
-    items = group.split("\n")
+    items = group.rstrip().split("\n")
     # 2. convert list of strings into list of numbers
     calories = map(int, items)
     # 3. summarise the calories
